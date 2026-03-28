@@ -41,9 +41,10 @@ const navStyles = {
 export default function NavBar() {
   const { isLoading, darkMode } = useAppSelector((state) => state.ui);
   const dispatch = useAppDispatch();
-  const {data: basket} = useFetchBasketQuery();
+  const { data: basket } = useFetchBasketQuery();
 
-  const itemCount = basket?.items.reduce((sum, item) => sum + item.quantity, 0) || 0;
+  const itemCount =
+    basket?.items.reduce((sum, item) => sum + item.quantity, 0) || 0;
 
   return (
     <AppBar position="fixed">
@@ -56,7 +57,7 @@ export default function NavBar() {
       >
         <Box display="flex" alignItems="center">
           <Typography variant="h6" sx={navStyles} component={NavLink} to="/">
-            ON-LINE STORE
+            .NET & REACT STORE
           </Typography>
           <IconButton onClick={() => dispatch(setDarkMode())}>
             {darkMode ? <DarkMode /> : <LightMode sx={{ color: "yellow" }} />}
