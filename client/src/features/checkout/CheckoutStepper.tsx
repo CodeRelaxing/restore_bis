@@ -21,7 +21,6 @@ import {
   useFetchAddressQuery,
   useUpdateUserAddressMutation,
 } from "../account/accountApi";
-import type { Address } from "../../app/models/user";
 import type {
   ConfirmationToken,
   StripeAddressElementChangeEvent,
@@ -31,15 +30,14 @@ import { useBasket } from "../../lib/hooks/useBasket";
 import { currencyFormat } from "../../lib/util";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { useCreateOrderMutation } from "../orders/OrderApi";
+import { useCreateOrderMutation } from "../orders/orderApi";
 
 const steps = ["Address", "Payment", "Review"];
 
 export default function CheckoutStepper() {
   const [activeStep, setActiveStep] = useState(0);
   const [createOrder] = useCreateOrderMutation();
-  const { data: { name, ...restAddress } = {} as Address, isLoading } =
-    useFetchAddressQuery();
+  const { data, isLoading } = useFetchAddressQuery();
   const [updateAddress] = useUpdateUserAddressMutation();
   const [saveAddressChecked, setSaveAddressChecked] = useState(false);
   const { basket } = useBasket();
@@ -52,6 +50,11 @@ export default function CheckoutStepper() {
   const navigate = useNavigate();
   const [confirmationToken, setConfirmationToken] =
     useState<ConfirmationToken | null>(null);
+
+  let name, restAddress;
+  if (data) {
+    ({ name, ...restAddress } = data);
+  }
 
   const handleNext = async () => {
     if (activeStep === 0 && saveAddressChecked && elements) {

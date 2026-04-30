@@ -2,7 +2,8 @@ import { useForm } from "react-hook-form";
 import { useRegisterMutation } from "./accountApi";
 import {
   registerSchema,
-  RegisterSchema,
+  type RegisterSchema,
+  
 } from "../../lib/schemas/registerSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LockOutlined } from "@mui/icons-material";

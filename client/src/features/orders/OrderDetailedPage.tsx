@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { useFetchOrderDetailedQuery } from "./OrderApi";
+import { useFetchOrderDetailedQuery } from "./orderApi";
 import {
   Box,
   Button,

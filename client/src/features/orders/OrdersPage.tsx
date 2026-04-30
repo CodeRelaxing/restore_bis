@@ -8,7 +8,7 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import { useFetchOrdersQuery } from "./OrderApi";
+import { useFetchOrdersQuery } from "./orderApi";
 import { useNavigate } from "react-router-dom";
 import { format } from "date-fns";
 import { currencyFormat } from "../../lib/util";

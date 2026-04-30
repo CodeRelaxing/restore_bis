@@ -8,7 +8,7 @@ import { basketApi } from "../../features/basket/basketApi";
 import { catalogSlice } from "../../features/catalog/catalogSlice";
 import { accountApi } from "../../features/account/accountApi";
 import { checkoutApi } from "../../features/checkout/checkoutApi";
-import { orderApi } from "../../features/orders/OrderApi";
+import { orderApi } from "../../features/orders/orderApi";
 
 
 export function configureTheStore () {
