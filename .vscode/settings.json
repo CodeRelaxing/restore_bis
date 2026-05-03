@@ -1,1 +1,4 @@
-{}
+{
+  "appService.defaultWebAppToDeploy": "/subscriptions/f5b66aca-e57d-4688-8444-e872a56202f2/resourceGroups/restore-rg-v2/providers/Microsoft.Web/sites/restore-net-course",
+  "appService.deploySubpath": "API/bin/Publish"
+}
