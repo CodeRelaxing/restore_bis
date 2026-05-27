@@ -1,3 +1,4 @@
+import type { FieldValues, UseFormSetError, Path } from "react-hook-form";
 import type { PaymentSummary, ShippingAddress } from "../app/models/order";
 
 
@@ -23,3 +24,22 @@ export const formatPaymentString = (card: PaymentSummary) => {
 
         return `${card?.brand?.toUpperCase()}, **** **** **** ${card?.last4}, Exp: ${card?.exp_month}/${card?.exp_year}`;
 };
+
+export function handleApiError<T extends FieldValues>(
+        error: unknown,
+        setError: UseFormSetError<T>,
+        fieldnames: Path<T>[]
+) {
+        const apiError = (error as {message: string}) || {};
+
+        if (apiError.message && typeof apiError.message === "string") {
+                const errorArray = apiError.message.split(',');
+
+                errorArray.forEach(e => {
+                        const matchedField = fieldnames.find(fieldName =>
+                                e.toLowerCase().includes(fieldName.toString().toLowerCase()));
+
+                        if (matchedField) setError(matchedField, {message: e.trim()})
+                })
+        }
+}
