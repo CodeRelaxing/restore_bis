@@ -57,7 +57,7 @@ export default function InventoryPage() {
   return (
     <>
       <Box display="flex" justifyContent="space-between">
-        <Typography sx={{ p: 2 }} variant="h4">
+        <Typography sx={{ p: 3 }} variant="h4">
           Inventory
         </Typography>
         <Button
